@@ -18,13 +18,20 @@ public class Pawn extends AbstractPiece {
     public List<Move> getAllowedMoves(Coordinates from, Board board) {
         List<Move> moves = new ArrayList<>();
 
-        int stepInRow = colour == PlayerColour.BLACK ? 1: -1;
+        if (colour == PlayerColour.WHITE & from.getRow() == 6) {
+            moves.add(new Move(from, from.plus(-2, 0)));
 
-        if (stepInRow == 1){
-            moves = Collections.singletonList(new Move(from, from.plus(1, 0)));
-        }else if (stepInRow == -1){
-            moves = Collections.singletonList(new Move(from, from.plus(-1, 0)));
+        }else if (colour == PlayerColour.BLACK & from.getRow() == 1){
+            moves.add(new Move(from, from.plus(2, 0)));
         }
+
+        if (colour == PlayerColour.WHITE){
+            moves.add(new Move(from, from.plus(-1, 0)));
+
+        }else if (colour == PlayerColour.BLACK){
+            moves.add(new Move(from, from.plus(1, 0)));;
+        }
+
         return moves;
     }
 }
