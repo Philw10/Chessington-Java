@@ -32,6 +32,17 @@ public class Pawn extends AbstractPiece {
             moves.add(new Move(from, from.plus(1, 0)));;
         }
 
+        for (int i = 0; i < moves.size(); i++) {
+            Piece piece = board.get(new Coordinates(moves.get(i).getTo().getRow(), moves.get(i).getTo().getCol()));
+            if (piece == null){
+                continue;
+            }else{
+                moves.remove(i);
+            }
+            /*if (board.get(new Coordinates(moves.get(i).getTo().getRow(), moves.get(i).getTo().getCol()))){
+            System.out.println(moves.get(i).getTo());*/
+        }
+
         return moves;
     }
 }
