@@ -25,10 +25,10 @@ public class Pawn extends AbstractPiece {
             moves.add(new Move(from, from.plus(2, 0)));
         }
 
-        if (colour == PlayerColour.WHITE){
+        if (colour == PlayerColour.WHITE & from.getRow() > 0){
             moves.add(new Move(from, from.plus(-1, 0)));
 
-        }else if (colour == PlayerColour.BLACK){
+        }else if (colour == PlayerColour.BLACK & from.getRow() < 7){
             moves.add(new Move(from, from.plus(1, 0)));;
         }
 
@@ -39,8 +39,6 @@ public class Pawn extends AbstractPiece {
             }else{
                 moves.remove(i);
             }
-            /*if (board.get(new Coordinates(moves.get(i).getTo().getRow(), moves.get(i).getTo().getCol()))){
-            System.out.println(moves.get(i).getTo());*/
         }
 
         return moves;
